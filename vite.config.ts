@@ -5,8 +5,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
+    const base = '/parmak-futbolu3/';
     return {
-      base: '/parmak-futbolu3/',
+      base: base,
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -23,20 +24,21 @@ export default defineConfig(({ mode }) => {
             theme_color: '#2c3e50',
             background_color: '#2c3e50',
             display: 'standalone',
-            start_url: '.',
+            scope: base,
+            start_url: base,
             icons: [
               {
-                src: 'icon-144.png',
+                src: `${base}icon-144.png`,
                 sizes: '144x144',
                 type: 'image/png'
               },
               {
-                src: 'icon-192.png',
+                src: `${base}icon-192.png`,
                 sizes: '192x192',
                 type: 'image/png'
               },
               {
-                src: 'icon-512.png',
+                src: `${base}icon-512.png`,
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'any maskable'
