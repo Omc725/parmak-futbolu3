@@ -16,9 +16,41 @@ export default defineConfig(({ mode }) => {
         react(),
         VitePWA({
           registerType: 'autoUpdate',
-          manifest: false, // Manifest'i manuel olarak yönettiğimiz için bunu kapatıyoruz.
-          // Servis çalışanının çevrimdışı kullanım için ikonları önbelleğe almasını sağlıyoruz.
-          includeAssets: ['icon-512.png', 'icon-192.png', 'icon-144.png'],
+          // PWA eklentisinin manifesti oluşturmasını sağlıyoruz.
+          // Bu, dosya yollarının doğru yönetilmesini garanti eder.
+          manifest: {
+            name: "Parmak Futbolu",
+            short_name: "Parmak Futbolu",
+            description: "Hızlı tempolu bir langırt oyunu! Takımını seç, yapay zekaya karşı lig ve turnuva modlarında mücadele et ve şampiyon ol!",
+            theme_color: "#2c3e50",
+            background_color: "#2c3e50",
+            display: "standalone",
+            scope: base,
+            start_url: base,
+            icons: [
+              {
+                src: "icon-144.png", // Eklenti, 'base' yolunu otomatik olarak ekleyecektir.
+                sizes: "144x144",
+                type: "image/png"
+              },
+              {
+                src: "icon-192.png",
+                sizes: "192x192",
+                type: "image/png"
+              },
+              {
+                src: "icon-512.png",
+                sizes: "512x512",
+                type: "image/png",
+                purpose: "any maskable"
+              }
+            ]
+          },
+          // İkonların servis çalışanı tarafından önbelleğe alınmasını sağlıyoruz.
+          // Bu ikonların 'public' klasöründe olması gerekir.
+          workbox: {
+             globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+          }
         })
       ],
       define: {
