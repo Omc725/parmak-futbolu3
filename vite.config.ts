@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         react(),
         VitePWA({
           registerType: 'autoUpdate',
-          includeAssets: ['icon-512x512.png', 'icon-192x192.png', 'icon-144x144.png'],
+          includeAssets: ['icon-512.png', 'icon-192.png', 'icon-144.png'],
           manifest: {
             name: 'Parmak Futbolu',
             short_name: 'Parmak Futbolu',
@@ -26,17 +26,17 @@ export default defineConfig(({ mode }) => {
             start_url: '.',
             icons: [
               {
-                src: 'icon-144x144.png',
+                src: 'icon-144.png',
                 sizes: '144x144',
                 type: 'image/png'
               },
               {
-                src: 'icon-192x192.png',
+                src: 'icon-192.png',
                 sizes: '192x192',
                 type: 'image/png'
               },
               {
-                src: 'icon-512x512.png',
+                src: 'icon-512.png',
                 sizes: '512x512',
                 type: 'image/png',
                 purpose: 'any maskable'
